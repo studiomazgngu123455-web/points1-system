@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام نقاط المكافآت</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #8A2BE2;
+            --secondary: #FF6B6B;
+            --accent: #4ECDC4;
+            --dark: #2C3E50;
+            --light: #F8F9FA;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            color: white;
+        }
+        
+        .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .title {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .whatsapp-section {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #25D366;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin: 10px;
+        }
+        
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            background: #128C7E;
+        }
+        
+        .whatsapp-icon {
+            font-size: 1.5rem;
+        }
+        
+        /* أنماط نظام التبويب */
+        .tabs-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 0;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .tabs-header {
+            display: flex;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 15px 15px 0 0;
+        }
+        
+        .tab-btn {
+            flex: 1;
+            padding: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .tab-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .tab-btn.active {
+            background: rgba(255, 255, 255, 0.2);
+            border-bottom: 3px solid #FFD700;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 30px;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* أنماط الجداول */
+        .table-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        th {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+        
+        tr:nth-child(even) {
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+        
+        tr:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        
+        .duration-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .duration-14 { background: #FFEAA7; color: #D35400; }
+        .duration-30 { background: #A29BFE; color: white; }
+        .duration-life { background: #55EFC4; color: #00B894; }
+        .duration-7 { background: #FDCB6E; color: #E17055; }
+        
+        .points-badge {
+            display: inline-block;
+            padding: 8px 15px;
+            background: linear-gradient(135deg, var(--accent), #26C281);
+            color: white;
+            border-radius: 20px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .user-points-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #8B4513;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+        
+        .highlight-section {
+            background: linear-gradient(135deg, #FF9A9E, #FAD0C4);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+            color: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .highlight-title {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        
+        .highlight-desc {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 20px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .gift-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .gift-icon {
+            font-size: 4rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--dark);
+            font-size: 1.6rem;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 1rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: white;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2rem;
+            }
+            
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            .tabs-header {
+                flex-direction: column;
+            }
+            
+            .tab-btn {
+                padding: 15px;
+                font-size: 1rem;
+            }
+            
+            th, td {
+                padding: 10px 5px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">🎁</div>
+            <h1 class="title">نظام نقاط المكافآت</h1>
+            <p class="subtitle">احصل على مكافآت حصرية واستمتع بتجربة فريدة من نوعها!</p>
+        </header>
+        
+        <!-- قسم واتساب -->
+        <div class="whatsapp-section">
+            <h2 style="color: white; margin-bottom: 20px;">🎯 هل تريد إرسال هدية لصديق؟</h2>
+            <a href="https://wa.me/201556864346?text=مرحباً%20👋%20أريد%20إرسال%20هدية%20لصديق%20من%20خلال%20نظام%20نقاط%20المكافآت" 
+               class="whatsapp-btn" target="_blank">
+                <i class="fab fa-whatsapp whatsapp-icon"></i>
+                اضغط هنا لإرسال الهدايا عبر واتساب
+            </a>
+            <p style="color: white; margin-top: 15px; opacity: 0.9;">
+                سنساعدك في إرسال الهدايا لأصدقائك عبر واتساب
+            </p>
+        </div>
+        
+        <!-- نظام التبويب الجديد -->
+        <div class="tabs-container">
+            <div class="tabs-header">
+                <button class="tab-btn active" onclick="openTab('users-tab')">
+                    👥 نقاط المستخدمين
+                </button>
+                <button class="tab-btn" onclick="openTab('rewards-tab')">
+                    ⭐ المكافآت بالنقاط
+                </button>
+            </div>
+            
+            <!-- تبويب نقاط المستخدمين -->
+            <div id="users-tab" class="tab-content active">
+                <h2 class="section-title">🏆 نقاط المستخدمين</h2>
+                <p class="section-subtitle">أفضل المستخدمين في نظام النقاط</p>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>عدد النقاط</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>111112</strong></td>
+                                <td><span class="user-points-badge">244 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>6666</strong></td>
+                                <td><span class="user-points-badge">182 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>7777</strong></td>
+                                <td><span class="user-points-badge">154 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>1078028</strong></td>
+                                <td><span class="user-points-badge">119 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>1055756</strong></td>
+                                <td><span class="user-points-badge">118 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>33333</strong></td>
+                                <td><span class="user-points-badge">110 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>222266</strong></td>
+                                <td><span class="user-points-badge">105 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>1298898</strong></td>
+                                <td><span class="user-points-badge">102 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>999922</strong></td>
+                                <td><span class="user-points-badge">97 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>11027270</strong></td>
+                                <td><span class="user-points-badge">94 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>696969</strong></td>
+                                <td><span class="user-points-badge">83 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>1718750</strong></td>
+                                <td><span class="user-points-badge">78 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>1489887</strong></td>
+                                <td><span class="user-points-badge">72 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>666600</strong></td>
+                                <td><span class="user-points-badge">69 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>888866</strong></td>
+                                <td><span class="user-points-badge">69 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>909</strong></td>
+                                <td><span class="user-points-badge">62 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>6660</strong></td>
+                                <td><span class="user-points-badge">59 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>999933</strong></td>
+                                <td><span class="user-points-badge">56 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>11208004</strong></td>
+                                <td><span class="user-points-badge">54 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>1936412</strong></td>
+                                <td><span class="user-points-badge">53 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>1062017</strong></td>
+                                <td><span class="user-points-badge">53 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>1063165</strong></td>
+                                <td><span class="user-points-badge">51 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>222</strong></td>
+                                <td><span class="user-points-badge">50 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>11208239</strong></td>
+                                <td><span class="user-points-badge">49 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>666100</strong></td>
+                                <td><span class="user-points-badge">48 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>1785489</strong></td>
+                                <td><span class="user-points-badge">42 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>500101</strong></td>
+                                <td><span class="user-points-badge">41 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>404040</strong></td>
+                                <td><span class="user-points-badge">41 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>11057416</strong></td>
+                                <td><span class="user-points-badge">39 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>1487329</strong></td>
+                                <td><span class="user-points-badge">39 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>119999</strong></td>
+                                <td><span class="user-points-badge">36 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>1148287</strong></td>
+                                <td><span class="user-points-badge">35 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>1141186</strong></td>
+                                <td><span class="user-points-badge">35 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>1488058</strong></td>
+                                <td><span class="user-points-badge">35 نقطة</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- تبويب المكافآت بالنقاط -->
+            <div id="rewards-tab" class="tab-content">
+                <h2 class="section-title">🎁 المكافآت بالنقاط</h2>
+                <p class="section-subtitle">جميع المكافآت المتاحة في النظام</p>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>المكافأة</th>
+                                <th>السعر بالنقاط</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>🎪 دخولية مخصصة</td>
+                                <td><span class="points-badge">154 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td>✨ مؤثرات دخول</td>
+                                <td><span class="points-badge">7 نقاط</span></td>
+                            </tr>
+                            <tr>
+                                <td>🌊 موجات المايل</td>
+                                <td><span class="points-badge">7 نقاط</span></td>
+                            </tr>
+                            <tr>
+                                <td>🎨 خلفية الروم</td>
+                                <td><span class="points-badge">15 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td>🎁 هدية مخصصة</td>
+                                <td><span class="points-badge">174 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td>🖼️ اطار مخصص</td>
+                                <td><span class="points-badge">50 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td>💫 زخرفة صفحة المعلومات</td>
+                                <td><span class="points-badge">7 نقاط</span></td>
+                            </tr>
+                            <tr>
+                                <td>📊 المستوى</td>
+                                <td><span class="points-badge">20 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td>🥉 VIP 3</td>
+                                <td><span class="points-badge">42 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td>🥈 VIP 4</td>
+                                <td><span class="points-badge">73 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td>🥇 VIP 5</td>
+                                <td><span class="points-badge">95 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td>🔓 فك حظر لمحتوى غير لأنق</td>
+                                <td><span class="points-badge">51 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td>📢 فك الحظر بسبب الترويج</td>
+                                <td><span class="points-badge">80 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td>🔗 ربط حساب الروم</td>
+                                <td><span class="points-badge">15 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td>🔢 إيدي 6 أرقام</td>
+                                <td><span class="points-badge">100 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td>🔢 إيدي 5 أرقام</td>
+                                <td><span class="points-badge">163 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td>🔢 إيدي 4 أرقام</td>
+                                <td><span class="points-badge">310 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td>🔢 إيدي 3 أرقام</td>
+                                <td><span class="points-badge">470 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td>🔢 إيدي رقمين</td>
+                                <td><span class="points-badge">1000 نقطة</span></td>
+                            </tr>
+                            <tr>
+                                <td>🔢 إيدي رقم واحد</td>
+                                <td><span class="points-badge">1400 نقطة</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- باقي المحتوى -->
+        <div class="table-container">
+            <h2 style="text-align: center; margin-bottom: 20px; color: var(--dark);">قائمة المكافآت المتاحة</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>المدة</th>
+                        <th>السعر بالنقاط</th>
+                        <th>الميزة</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="duration-badge duration-14">14 يوم</span></td>
+                        <td><span class="points-badge">154 نقطة</span></td>
+                        <td>دخولية مخصصة</td>
+                    </tr>
+                    <tr>
+                        <td><span class="duration-badge duration-30">30 يوم</span></td>
+                        <td><span class="points-badge">7 نقاط</span></td>
+                        <td>مؤثرات دخول</td>
+                    </tr>
+                    <tr>
+                        <td><span class="duration-badge duration-30">30 يوم</span></td>
+                        <td><span class="points-badge">7 نقاط</span></td>
+                        <td>موجات المايل</td>
+                    </tr>
+                    <tr>
+                        <td><span class="duration-badge duration-life">مدى الحياة</span></td>
+                        <td><span class="points-badge">15 نقطة</span></td>
+                        <td>خلفية الروم</td>
+                    </tr>
+                    <tr>
+                        <td><span class="duration-badge duration-14">14 يوم</span></td>
+                        <td><span class="points-badge">174 نقطة</span></td>
+                        <td>هدية مخصصة</td>
+                    </tr>
+                    <tr>
+                        <td><span class="duration-badge duration-14">14 يوم</span></td>
+                        <td><span class="points-badge">50 نقطة</span></td>
+                        <td>اطار مخصص</td>
+                    </tr>
+                    <tr>
+                        <td><span class="duration-badge duration-life">مدى الحياة</span></td>
+                        <td><span class="points-badge">7 نقاط</span></td>
+                        <td>زخرفة صفحة المعلومات</td>
+                    </tr>
+                    <tr>
+                        <td><span class="duration-badge duration-life">مدى الحياة</span></td>
+                        <td><span class="points-badge">20 نقطة</span></td>
+                        <td>المستوى</td>
+                    </tr>
+                    <tr>
+                        <td><span class="duration-badge duration-7">7 أيام</span></td>
+                        <td><span class="points-badge">42 نقطة</span></td>
+                        <td>VIP 3</td>
+                    </tr>
+                    <tr>
+                        <td><span class="duration-badge duration-7">7 أيام</span></td>
+                        <td><span class="points-badge">73 نقاط</span></td>
+                        <td>VIP 4</td>
+                    </tr>
+                    <tr>
+                        <td><span class="duration-badge duration-7">7 أيام</span></td>
+                        <td><span class="points-badge">95 نقاط</span></td>
+                        <td>VIP 5</td>
+                    </tr>
+                    <tr>
+                        <td>-</td>
+                        <td><span class="points-badge">51 نقطة</span></td>
+                        <td>فك حظر لمحتوى غير لأنق</td>
+                    </tr>
+                    <tr>
+                        <td>-</td>
+                        <td><span class="points-badge">80 نقطة</span></td>
+                        <td>فك الحظر بسبب الترويج</td>
+                    </tr>
+                    <tr>
+                        <td><span class="duration-badge duration-14">14 يوم</span></td>
+                        <td><span class="points-badge">15 نقطة</span></td>
+                        <td>ربط حساب الروم بنفس حساب المستخدم</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="table-container">
+            <h2 style="text-align: center; margin-bottom: 20px; color: var(--dark);">الإيدي المميز</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>المدة</th>
+                        <th>السعر بالنقاط</th>
+                        <th>النوع</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="duration-badge duration-14">14 يوم</span></td>
+                        <td><span class="points-badge">100 نقطة</span></td>
+                        <td>إيدي مميز من 6 ارقام</td>
+                    </tr>
+                    <tr>
+                        <td><span class="duration-badge duration-14">14 يوم</span></td>
+                        <td><span class="points-badge">163 نقطة</span></td>
+                        <td>إيدي مميز من 5 ارقام</td>
+                    </tr>
+                    <tr>
+                        <td><span class="duration-badge duration-14">14 يوم</span></td>
+                        <td><span class="points-badge">310 نقطة</span></td>
+                        <td>إيدي مميز من 4 ارقام</td>
+                    </tr>
+                    <tr>
+                        <td><span class="duration-badge duration-14">14 يوم</span></td>
+                        <td><span class="points-badge">470 نقطة</span></td>
+                        <td>إيدي مميز من 3 ارقام</td>
+                    </tr>
+                    <tr>
+                        <td><span class="duration-badge duration-14">14 يوم</span></td>
+                        <td><span class="points-badge">1000 نقطة</span></td>
+                        <td>إيدي مميز من 2 ارقام</td>
+                    </tr>
+                    <tr>
+                        <td><span class="duration-badge duration-14">14 يوم</span></td>
+                        <td><span class="points-badge">1400 نقطة</span></td>
+                        <td>إيدي مميز من 1 ارقام</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- باقي الأقسام -->
+        <div class="gift-section">
+            <div class="gift-icon">🎁</div>
+            <h2 style="color: var(--dark); margin-bottom: 15px;">ميزة إهداء النقاط الجديدة!</h2>
+            <p style="color: #666; margin-bottom: 20px; font-size: 1.1rem;">
+                الآن يمكنك مشاركة الفرحة مع أصدقائك! أهدِ النقاط لأحبابك وادعمهم في الحصول على المكافآت التي يحلمون بها.
+            </p>
+            <a href="https://wa.me/201556864346?text=مرحباً%20👋%20أريد%20إرسال%20هدية%20لصديق%20من%20خلال%20نظام%20نقاط%20المكافآت" 
+               class="cta-button" style="background: #25D366;">
+                <i class="fab fa-whatsapp"></i> إرسال هدية عبر واتساب
+            </a>
+        </div>
+        
+        <div class="highlight-section">
+            <h2 class="highlight-title">لا تفوت هذه الفرصة!</h2>
+            <p class="highlight-desc">
+                انضم إلى آلاف المستخدمين الذين استفادوا من نظام النقاط وحصلوا على مكافآت حصرية. 
+                العروض محدودة والفرصة أمامك!
+            </p>
+            <a href="https://wa.me/201556864346?text=مرحباً%20👋%20أريد%20الاستفسار%20عن%20نظام%20نقاط%20المكافآت" 
+               class="cta-button" style="background: linear-gradient(135deg, var(--accent), #26C281);">
+                <i class="fab fa-whatsapp"></i> استفسر عبر واتساب
+            </a>
+        </div>
+        
+        <footer>
+            <p>TopVoice &copy; 2023 - جميع الحقوق محفوظة</p>
+            <p>للتواصل: <a href="https://wa.me/201556864346" style="color: #25D366; text-decoration: none;">+20 15 56864346</a></p>
+        </footer>
+    </div>
+
+    <script>
+        // دالة فتح التبويبات
+        function openTab(tabId) {
+            // إخفاء جميع المحتويات
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // إزالة النشاط من جميع الأزرار
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // إظهار المحتوى المطلوب
+            document.getElementById(tabId).classList.add('active');
+            
+            // تفعيل الزر المطلوب
+            event.currentTarget.classList.add('active');
+        }
+        
+        // تأثيرات بسيطة للصفحة
+        document.addEventListener('DOMContentLoaded', function() {
+            // تأثير للجدول
+            const tableRows = document.querySelectorAll('tbody tr');
+            
+            tableRows.forEach(row => {
+                row.addEventListener('mouseenter', function() {
+                    this.style.backgroundColor = 'rgba(138, 43, 226, 0.05)';
+                });
+                
+                row.addEventListener('mouseleave', function() {
+                    this.style.backgroundColor = '';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
