@@ -122,48 +122,118 @@
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
         }
         
-        /* أنماط نظام التبويب */
+        /* أنماط نظام التبويب الجديدة والمميزة */
         .tabs-container {
             background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
+            border-radius: 20px;
             padding: 0;
-            margin: 30px 0;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin: 40px 0;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
             overflow: hidden;
+            border: 3px solid #FFD700;
+            position: relative;
+        }
+        
+        .tabs-container::before {
+            content: "🎯 اضغط هنا لمعرفة النشاط!";
+            position: absolute;
+            top: -15px;
+            right: 50%;
+            transform: translateX(50%);
+            background: linear-gradient(135deg, #FF6B6B, #FFD700);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 10;
+            animation: pulse 2s infinite;
         }
         
         .tabs-header {
             display: flex;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 15px 15px 0 0;
+            background: linear-gradient(135deg, #8A2BE2, #FF6B6B);
+            border-radius: 18px 18px 0 0;
+            padding: 5px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tabs-header::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #FFD700, #FFA500, #FFD700);
+            animation: shimmer 3s infinite;
         }
         
         .tab-btn {
             flex: 1;
-            padding: 20px;
-            background: none;
+            padding: 25px 20px;
+            background: rgba(255, 255, 255, 0.1);
             border: none;
             color: white;
-            font-size: 1.2rem;
-            font-weight: bold;
+            font-size: 1.3rem;
+            font-weight: 800;
             cursor: pointer;
-            transition: all 0.3s;
-            border-bottom: 3px solid transparent;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 15px;
+            margin: 0 5px;
+            position: relative;
+            overflow: hidden;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            border: 2px solid transparent;
+        }
+        
+        .tab-btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s;
+        }
+        
+        .tab-btn:hover::before {
+            left: 100%;
         }
         
         .tab-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px) scale(1.02);
+            border: 2px solid #FFD700;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
         
         .tab-btn.active {
-            background: rgba(255, 255, 255, 0.2);
-            border-bottom: 3px solid #FFD700;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #8B4513;
+            border: 2px solid #FFFFFF;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            transform: translateY(-3px);
+            text-shadow: none;
+        }
+        
+        .tab-btn.active::after {
+            content: "👇";
+            position: absolute;
+            bottom: -20px;
+            right: 50%;
+            transform: translateX(50%);
+            font-size: 1.5rem;
+            animation: bounce 1s infinite;
         }
         
         .tab-content {
             display: none;
-            padding: 30px;
-            animation: fadeIn 0.5s ease-in;
+            padding: 40px 30px;
+            animation: fadeIn 0.6s ease-in;
         }
         
         .tab-content.active {
@@ -171,8 +241,23 @@
         }
         
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: translateX(50%) scale(1); }
+            50% { transform: translateX(50%) scale(1.05); }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateX(50%) translateY(0); }
+            50% { transform: translateX(50%) translateY(-5px); }
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200px 0; }
+            100% { background-position: 200px 0; }
         }
         
         /* أنماط الجداول */
@@ -311,6 +396,68 @@
             opacity: 0.8;
         }
         
+        /* أنماط جديدة لإضافة البحث */
+        .search-section {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .search-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+        }
+        
+        #userIdSearch {
+            padding: 15px 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 30px;
+            width: 300px;
+            font-size: 1.1rem;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            text-align: center;
+        }
+        
+        #userIdSearch::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+        
+        #userIdSearch:focus {
+            outline: none;
+            border-color: #FFD700;
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .search-btn {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #8B4513;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+        
+        .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        #searchResult {
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+        
         @media (max-width: 768px) {
             .title {
                 font-size: 2rem;
@@ -325,13 +472,29 @@
             }
             
             .tab-btn {
-                padding: 15px;
-                font-size: 1rem;
+                padding: 20px 15px;
+                font-size: 1.1rem;
+                margin: 3px 0;
+            }
+            
+            .tabs-container::before {
+                font-size: 0.9rem;
+                padding: 8px 15px;
+                top: -12px;
             }
             
             th, td {
                 padding: 10px 5px;
                 font-size: 0.9rem;
+            }
+            
+            .search-section {
+                padding: 20px 15px;
+            }
+            
+            #userIdSearch {
+                width: 100%;
+                margin-bottom: 10px;
             }
         }
     </style>
@@ -342,43 +505,18 @@
         <header>
             <div class="logo">🎁</div>
             <h1 class="title">نظام نقاط المكافآت</h1>
-            <p class="subtitle">احصل على مكافآت حصرية واستمتع بتجربة فريدة من نوعها!</p>
+            <p class="subtitle">جميع المكافات يمكنك الحصول عليها فقط من خلال حدث النقاط وايضا عن طريق الاشتراك في الانشطة الخاصة بالتطبيق!</p>
         </header>
         
-        <!-- قسم واتساب لإرسال الهدايا -->
-        <div class="whatsapp-section">
-            <h2 style="color: white; margin-bottom: 20px;">🎯 هل تريد إرسال هدية لصديق؟</h2>
-            <a href="https://wa.me/201556864346?text=مرحباً%20👋%20أريد%20إرسال%20هدية%20لصديق%20من%20خلال%20نظام%20نقاط%20المكافآت" 
-               class="whatsapp-btn" target="_blank">
-                <i class="fab fa-whatsapp whatsapp-icon"></i>
-                اضغط هنا لإرسال الهدايا عبر واتساب
-            </a>
-            <p style="color: white; margin-top: 15px; opacity: 0.9;">
-                سنساعدك في إرسال الهدايا لأصدقائك عبر واتساب
-            </p>
-        </div>
-        
-        <!-- قسم خدمة العملاء والاستفسارات -->
-        <div class="support-section">
-            <h3 style="color: white; margin-bottom: 15px;">📞 خدمة العملاء والاستفسارات</h3>
-            <a href="https://wa.me/56961350756?text=مرحباً%20👋%20أريد%20الاستفسار%20عن%20خدمات%20نظام%20نقاط%20المكافآت" 
-               class="support-btn" target="_blank">
-                <i class="fas fa-headset"></i>
-                تواصل مع خدمة العملاء
-            </a>
-            <p style="color: white; margin-top: 10px; opacity: 0.9; font-size: 0.9rem;">
-                للاستفسارات والأسئلة: +56 9 6135 0756
-            </p>
-        </div>
-        
-        <!-- نظام التبويب الجديد -->
+       
+        <!-- نظام التبويب الجديد المميز -->
         <div class="tabs-container">
             <div class="tabs-header">
                 <button class="tab-btn active" onclick="openTab('users-tab')">
-                    👥 اضغط هنا نقاط المستخدمين 
+                    👥 اضغط هنا ← نقاط المستخدمين 
                 </button>
                 <button class="tab-btn" onclick="openTab('rewards-tab')">
-                    ⭐  اضغط هنا المكافآت بالنقاط 
+                    ⭐ اضغط هنا ← المكافآت بالنقاط 
                 </button>
             </div>
             
@@ -386,6 +524,19 @@
             <div id="users-tab" class="tab-content active">
                 <h2 class="section-title">🏆 نقاط المستخدمين</h2>
                 <p class="section-subtitle">أفضل المستخدمين في نظام النقاط</p>
+                
+                <!-- إضافة خانة البحث عن الـ ID -->
+                <div class="search-section">
+                    <h3>🔍 ابحث عن نقاطك</h3>
+                    <div style="display: flex; gap: 10px; justify-content: center; align-items: center; flex-wrap: wrap;">
+                        <input type="number" id="userIdSearch" placeholder="أدخل الـ ID الخاص بك" 
+                               style="padding: 12px 15px; border: 2px solid rgba(255,255,255,0.3); border-radius: 25px; width: 250px; font-size: 1rem; background: rgba(255,255,255,0.1); color: white; text-align: center;">
+                        <button onclick="searchUserPoints()" class="search-btn">
+                            اضغط هنا للبحث
+                        </button>
+                    </div>
+                    <div id="searchResult" style="margin-top: 15px; font-size: 1.1rem; font-weight: bold;"></div>
+                </div>
                 
                 <div class="table-container">
                     <table>
@@ -395,42 +546,8 @@
                                 <th>عدد النقاط</th>
                             </tr>
                         </thead>
-                        <tbody>
-                             <tr><td><strong>33</strong></td><td><span class="user-points-badge">792 نقطة</span></td></tr>  
-                            <tr><td><strong>111112</strong></td><td><span class="user-points-badge">266 نقطة</span></td></tr>
-                            <tr><td><strong>6666</strong></td><td><span class="user-points-badge">190 نقطة</span></td></tr>
-                            <tr><td><strong>7777</strong></td><td><span class="user-points-badge">165 نقطة</span></td></tr>
-                            <tr><td><strong>1078028</strong></td><td><span class="user-points-badge">144 نقطة</span></td></tr>
-                            <tr><td><strong>1055756</strong></td><td><span class="user-points-badge">124 نقطة</span></td></tr>
-                            <tr><td><strong>33333</strong></td><td><span class="user-points-badge">118 نقطة</span></td></tr>
-                            <tr><td><strong>222266</strong></td><td><span class="user-points-badge">108 نقطة</span></td></tr>
-                            <tr><td><strong>1298898</strong></td><td><span class="user-points-badge">105 نقطة</span></td></tr>
-                            <tr><td><strong>999922</strong></td><td><span class="user-points-badge">100 نقطة</span></td></tr>
-                            <tr><td><strong>11027270</strong></td><td><span class="user-points-badge">98 نقطة</span></td></tr>
-                            <tr><td><strong>696969</strong></td><td><span class="user-points-badge">83 نقطة</span></td></tr>
-                            <tr><td><strong>1718750</strong></td><td><span class="user-points-badge">78 نقطة</span></td></tr>
-                            <tr><td><strong>1489887</strong></td><td><span class="user-points-badge">86 نقطة</span></td></tr>
-                            <tr><td><strong>666600</strong></td><td><span class="user-points-badge">73 نقطة</span></td></tr>
-                            <tr><td><strong>888866</strong></td><td><span class="user-points-badge">72 نقطة</span></td></tr>
-                            <tr><td><strong>909</strong></td><td><span class="user-points-badge">62 نقطة</span></td></tr>
-                            <tr><td><strong>6660</strong></td><td><span class="user-points-badge">70 نقطة</span></td></tr>
-                            <tr><td><strong>999933</strong></td><td><span class="user-points-badge">56 نقطة</span></td></tr>
-                            <tr><td><strong>11208004</strong></td><td><span class="user-points-badge">54 نقطة</span></td></tr>
-                            <tr><td><strong>1936412</strong></td><td><span class="user-points-badge">53 نقطة</span></td></tr>
-                            <tr><td><strong>1062017</strong></td><td><span class="user-points-badge">59 نقطة</span></td></tr>
-                            <tr><td><strong>1063165</strong></td><td><span class="user-points-badge">51 نقطة</span></td></tr>
-                            <tr><td><strong>222</strong></td><td><span class="user-points-badge">50 نقطة</span></td></tr>
-                            <tr><td><strong>11208239</strong></td><td><span class="user-points-badge">49 نقطة</span></td></tr>
-                            <tr><td><strong>666100</strong></td><td><span class="user-points-badge">50 نقطة</span></td></tr>
-                            <tr><td><strong>1785489</strong></td><td><span class="user-points-badge">49 نقطة</span></td></tr>
-                            <tr><td><strong>500101</strong></td><td><span class="user-points-badge">41 نقطة</span></td></tr>
-                            <tr><td><strong>404040</strong></td><td><span class="user-points-badge">41 نقطة</span></td></tr>
-                            <tr><td><strong>11057416</strong></td><td><span class="user-points-badge">39 نقطة</span></td></tr>
-                            <tr><td><strong>1487329</strong></td><td><span class="user-points-badge">39 نقطة</span></td></tr>
-                            <tr><td><strong>119999</strong></td><td><span class="user-points-badge">36 نقطة</span></td></tr>
-                            <tr><td><strong>1148287</strong></td><td><span class="user-points-badge">35 نقطة</span></td></tr>
-                            <tr><td><strong>1141186</strong></td><td><span class="user-points-badge">35 نقطة</span></td></tr>
-                            <tr><td><strong>1488058</strong></td><td><span class="user-points-badge">35 نقطة</span></td></tr>
+                        <tbody id="usersTable">
+                            <!-- البيانات سيتم إضافتها بواسطة JavaScript -->
                         </tbody>
                     </table>
                 </div>
@@ -441,37 +558,41 @@
                 <h2 class="section-title">🎁 المكافآت بالنقاط</h2>
                 <p class="section-subtitle">جميع المكافآت المتاحة في النظام</p>
                 
-               <table dir="rtl" style="width: 100%; border-collapse: collapse; text-align: center; font-family: Arial, sans-serif;">
-  <thead>
-    <tr style="background-color: #f2f2f2;">
-      <th style="border: 1px solid #ddd; padding: 12px;">الامتيازات</th>
-      <th style="border: 1px solid #ddd; padding: 12px;">السعر بنظام النقاط</th>
-      <th style="border: 1px solid #ddd; padding: 12px;">المدة</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td style="border: 1px solid #ddd; padding: 10px;">دخولية مخصصة</td><td style="border: 1px solid #ddd; padding: 10px;">154</td><td style="border: 1px solid #ddd; padding: 10px;">14 يوم</td></tr>
-    <tr><td style="border: 1px solid #ddd; padding: 10px;">مؤثرات دخول</td><td style="border: 1px solid #ddd; padding: 10px;">7</td><td style="border: 1px solid #ddd; padding: 10px;">30 يوم</td></tr>
-    <tr><td style="border: 1px solid #ddd; padding: 10px;">موجات المايات</td><td style="border: 1px solid #ddd; padding: 10px;">7</td><td style="border: 1px solid #ddd; padding: 10px;">30 يوم</td></tr>
-    <tr><td style="border: 1px solid #ddd; padding: 10px;">خلفية الروم</td><td style="border: 1px solid #ddd; padding: 10px;">15</td><td style="border: 1px solid #ddd; padding: 10px;">مدى الحياة</td></tr>
-    <tr><td style="border: 1px solid #ddd; padding: 10px;">هدية مخصصة</td><td style="border: 1px solid #ddd; padding: 10px;">174</td><td style="border: 1px solid #ddd; padding: 10px;">14 يوم</td></tr>
-    <tr><td style="border: 1px solid #ddd; padding: 10px;">اطار مخصص</td><td style="border: 1px solid #ddd; padding: 10px;">50</td><td style="border: 1px solid #ddd; padding: 10px;">14 يوم</td></tr>
-    <tr><td style="border: 1px solid #ddd; padding: 10px;">زخرفة صفحة المعلومات</td><td style="border: 1px solid #ddd; padding: 10px;">7</td><td style="border: 1px solid #ddd; padding: 10px;">مدى الحياة</td></tr>
-    <tr><td style="border: 1px solid #ddd; padding: 10px;">المستوى</td><td style="border: 1px solid #ddd; padding: 10px;">20</td><td style="border: 1px solid #ddd; padding: 10px;">مدى الحياة</td></tr>
-    <tr><td style="border: 1px solid #ddd; padding: 10px;">VIP 3</td><td style="border: 1px solid #ddd; padding: 10px;">42</td><td style="border: 1px solid #ddd; padding: 10px;">7 أيام</td></tr>
-    <tr><td style="border: 1px solid #ddd; padding: 10px;">VIP 4</td><td style="border: 1px solid #ddd; padding: 10px;">73</td><td style="border: 1px solid #ddd; padding: 10px;">7 أيام</td></tr>
-    <tr><td style="border: 1px solid #ddd; padding: 10px;">VIP 5</td><td style="border: 1px solid #ddd; padding: 10px;">95</td><td style="border: 1px solid #ddd; padding: 10px;">7 أيام</td></tr>
-    <tr><td style="border: 1px solid #ddd; padding: 10px;">فك خطر لمحتوي غير لائق</td><td style="border: 1px solid #ddd; padding: 10px;">51</td><td style="border: 1px solid #ddd; padding: 10px;">-</td></tr>
-    <tr><td style="border: 1px solid #ddd; padding: 10px;">فك الخطر بسبب الترويج</td><td style="border: 1px solid #ddd; padding: 10px;">80</td><td style="border: 1px solid #ddd; padding: 10px;">-</td></tr>
-    <tr><td style="border: 1px solid #ddd; padding: 10px;">ربط حساب الروم بنفس حساب المستخدم</td><td style="border: 1px solid #ddd; padding: 10px;">15</td><td style="border: 1px solid #ddd; padding: 10px;">14 يوم</td></tr>
-    <tr><td style="border: 1px solid #ddd; padding: 10px;">ايدي مميز من 6 ارقام</td><td style="border: 1px solid #ddd; padding: 10px;">100</td><td style="border: 1px solid #ddd; padding: 10px;">14 يوم</td></tr>
-    <tr><td style="border: 1px solid #ddd; padding: 10px;">ايدي مميز من 5 ارقام</td><td style="border: 1px solid #ddd; padding: 10px;">163</td><td style="border: 1px solid #ddd; padding: 10px;">14 يوم</td></tr>
-    <tr><td style="border: 1px solid #ddd; padding: 10px;">ايدي مميز من 4 ارقام</td><td style="border: 1px solid #ddd; padding: 10px;">310</td><td style="border: 1px solid #ddd; padding: 10px;">14 يوم</td></tr>
-    <tr><td style="border: 1px solid #ddd; padding: 10px;">ايدي مميز من 3 ارقام</td><td style="border: 1px solid #ddd; padding: 10px;">470</td><td style="border: 1px solid #ddd; padding: 10px;">14 يوم</td></tr>
-    <tr><td style="border: 1px solid #ddd; padding: 10px;"> ايدي مميز من 2 ارقام</td><td style="border: 1px solid #ddd; padding: 10px;">خاص بالانشطة</td><td style="border: 1px solid #ddd; padding: 10px;">---</td></tr>
-    <tr><td style="border: 1px solid #ddd; padding: 10px;"> ايدي مميز من 1 ارقام</td><td style="border: 1px solid #ddd; padding: 10px;">خاص بالانشطة</td><td style="border: 1px solid #ddd; padding: 10px;">---</td></tr>
-  </tbody>
-</table>
+                <div class="table-container">
+                    <table dir="rtl" style="width: 100%; border-collapse: collapse; text-align: center; font-family: Arial, sans-serif;">
+                        <thead>
+                            <tr style="background: linear-gradient(135deg, #8A2BE2, #FF6B6B); color: white;">
+                                <th style="border: 1px solid #ddd; padding: 15px; font-size: 1.1rem;">الامتيازات</th>
+                                <th style="border: 1px solid #ddd; padding: 15px; font-size: 1.1rem;">السعر بنظام النقاط</th>
+                                <th style="border: 1px solid #ddd; padding: 15px; font-size: 1.1rem;">المدة</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td style="border: 1px solid #ddd; padding: 12px;">دخولية مخصصة</td><td style="border: 1px solid #ddd; padding: 12px;"><span class="user-points-badge">154 نقطة</span></td><td style="border: 1px solid #ddd; padding: 12px;">14 يوم</td></tr>
+                            <tr><td style="border: 1px solid #ddd; padding: 12px;">مؤثرات دخول</td><td style="border: 1px solid #ddd; padding: 12px;"><span class="user-points-badge">7 نقاط</span></td><td style="border: 1px solid #ddd; padding: 12px;">30 يوم</td></tr>
+                            <tr><td style="border: 1px solid #ddd; padding: 12px;">موجات المايات</td><td style="border: 1px solid #ddd; padding: 12px;"><span class="user-points-badge">7 نقاط</span></td><td style="border: 1px solid #ddd; padding: 12px;">30 يوم</td></tr>
+                            <tr><td style="border: 1px solid #ddd; padding: 12px;">خلفية الروم</td><td style="border: 1px solid #ddd; padding: 12px;"><span class="user-points-badge">15 نقطة</span></td><td style="border: 1px solid #ddd; padding: 12px;">مدى الحياة</td></tr>
+                            <tr><td style="border: 1px solid #ddd; padding: 12px;">هدية مخصصة</td><td style="border: 1px solid #ddd; padding: 12px;"><span class="user-points-badge">174 نقطة</span></td><td style="border: 1px solid #ddd; padding: 12px;">14 يوم</td></tr>
+                            <tr><td style="border: 1px solid #ddd; padding: 12px;">اطار مخصص</td><td style="border: 1px solid #ddd; padding: 12px;"><span class="user-points-badge">50 نقطة</span></td><td style="border: 1px solid #ddd; padding: 12px;">14 يوم</td></tr>
+                            <tr><td style="border: 1px solid #ddd; padding: 12px;">زخرفة صفحة المعلومات</td><td style="border: 1px solid #ddd; padding: 12px;"><span class="user-points-badge">7 نقاط</span></td><td style="border: 1px solid #ddd; padding: 12px;">مدى الحياة</td></tr>
+                            <tr><td style="border: 1px solid #ddd; padding: 12px;">المستوى</td><td style="border: 1px solid #ddd; padding: 12px;"><span class="user-points-badge">20 نقطة</span></td><td style="border: 1px solid #ddd; padding: 12px;">مدى الحياة</td></tr>
+                            <tr><td style="border: 1px solid #ddd; padding: 12px;">VIP 3</td><td style="border: 1px solid #ddd; padding: 12px;"><span class="user-points-badge">42 نقطة</span></td><td style="border: 1px solid #ddd; padding: 12px;">7 أيام</td></tr>
+                            <tr><td style="border: 1px solid #ddd; padding: 12px;">VIP 4</td><td style="border: 1px solid #ddd; padding: 12px;"><span class="user-points-badge">73 نقطة</span></td><td style="border: 1px solid #ddd; padding: 12px;">7 أيام</td></tr>
+                            <tr><td style="border: 1px solid #ddd; padding: 12px;">VIP 5</td><td style="border: 1px solid #ddd; padding: 12px;"><span class="user-points-badge">95 نقطة</span></td><td style="border: 1px solid #ddd; padding: 12px;">7 أيام</td></tr>
+                            <tr><td style="border: 1px solid #ddd; padding: 12px;">فك خطر لمحتوي غير لائق</td><td style="border: 1px solid #ddd; padding: 12px;"><span class="user-points-badge">51 نقطة</span></td><td style="border: 1px solid #ddd; padding: 12px;">-</td></tr>
+                            <tr><td style="border: 1px solid #ddd; padding: 12px;">فك الخطر بسبب الترويج</td><td style="border: 1px solid #ddd; padding: 12px;"><span class="user-points-badge">80 نقطة</span></td><td style="border: 1px solid #ddd; padding: 12px;">-</td></tr>
+                            <tr><td style="border: 1px solid #ddd; padding: 12px;">ربط حساب الروم بنفس حساب المستخدم</td><td style="border: 1px solid #ddd; padding: 12px;"><span class="user-points-badge">15 نقطة</span></td><td style="border: 1px solid #ddd; padding: 12px;">14 يوم</td></tr>
+                            <tr><td style="border: 1px solid #ddd; padding: 12px;">ايدي مميز من 6 ارقام</td><td style="border: 1px solid #ddd; padding: 12px;"><span class="user-points-badge">100 نقطة</span></td><td style="border: 1px solid #ddd; padding: 12px;">14 يوم</td></tr>
+                            <tr><td style="border: 1px solid #ddd; padding: 12px;">ايدي مميز من 5 ارقام</td><td style="border: 1px solid #ddd; padding: 12px;"><span class="user-points-badge">163 نقطة</span></td><td style="border: 1px solid #ddd; padding: 12px;">14 يوم</td></tr>
+                            <tr><td style="border: 1px solid #ddd; padding: 12px;">ايدي مميز من 4 ارقام</td><td style="border: 1px solid #ddd; padding: 12px;"><span class="user-points-badge">310 نقطة</span></td><td style="border: 1px solid #ddd; padding: 12px;">14 يوم</td></tr>
+                            <tr><td style="border: 1px solid #ddd; padding: 12px;">ايدي مميز من 3 ارقام</td><td style="border: 1px solid #ddd; padding: 12px;"><span class="user-points-badge">470 نقطة</span></td><td style="border: 1px solid #ddd; padding: 12px;">14 يوم</td></tr>
+                            <tr><td style="border: 1px solid #ddd; padding: 12px;"> ايدي مميز من 2 ارقام</td><td style="border: 1px solid #ddd; padding: 12px;"><span style="background: linear-gradient(135deg, #FF6B6B, #8A2BE2); color: white; padding: 6px 12px; border-radius: 15px; font-weight: bold;">خاص بالانشطة</span></td><td style="border: 1px solid #ddd; padding: 12px;">---</td></tr>
+                            <tr><td style="border: 1px solid #ddd; padding: 12px;"> ايدي مميز من 1 ارقام</td><td style="border: 1px solid #ddd; padding: 12px;"><span style="background: linear-gradient(135deg, #FF6B6B, #8A2BE2); color: white; padding: 6px 12px; border-radius: 15px; font-weight: bold;">خاص بالانشطة</span></td><td style="border: 1px solid #ddd; padding: 12px;">---</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
 
         <!-- باقي الأقسام -->
         <div class="gift-section">
@@ -508,6 +629,182 @@
     </div>
 
     <script>
+        // البيانات الجديدة المحدثة
+        const userPointsData = {
+            "111112": 312,
+            "6666": 249,
+            "33333": 229,
+            "7777": 179,
+            "8088": 178,
+            "1495696": 175,
+            "1055756": 173,
+            "44": 156,
+            "222266": 145,
+            "600666": 125,
+            "1298898": 118,
+            "1141186": 113,
+            "11027270": 109,
+            "999922": 107,
+            "666665": 107,
+            "6006": 102,
+            "1489887": 95,
+            "6660": 95,
+            "696969": 83,
+            "1718750": 81,
+            "888866": 79,
+            "1062017": 76,
+            "666600": 73,
+            "666100": 63,
+            "1931716": 62,
+            "909": 62,
+            "1487329": 61,
+            "1936412": 59,
+            "1785489": 59,
+            "999933": 56,
+            "550550": 55,
+            "222": 53,
+            "1071579": 52,
+            "1063165": 51,
+            "660666": 51,
+            "11057416": 50,
+            "11208239": 50,
+            "11211956": 49,
+            "11204700": 47,
+            "11206812": 45,
+            "404040": 44,
+            "414141": 42,
+            "1629132": 41,
+            "11089492": 41,
+            "500101": 41,
+            "999911": 40,
+            "1476055": 40,
+            "777771": 39,
+            "1498131": 39,
+            "11204179": 38,
+            "1148287": 37,
+            "1489412": 37,
+            "1063270": 37,
+            "2221": 36,
+            "8880": 36,
+            "119999": 36,
+            "1488058": 35,
+            "1048786": 34,
+            "11209073": 34,
+            "11207366": 34,
+            "11038082": 34,
+            "1932076": 33,
+            "11215715": 32,
+            "1057312": 31,
+            "1057104": 31,
+            "1104823": 31,
+            "11212194": 31,
+            "222000": 31,
+            "11207087": 30,
+            "11213208": 29,
+            "11207298": 29,
+            "11219141": 29,
+            "11204192": 29,
+            "11085393": 29,
+            "1712431": 28,
+            "11088431": 28,
+            "11083568": 27,
+            "999944": 27,
+            "11207215": 27,
+            "1125964": 26,
+            "11081711": 26,
+            "11046912": 26,
+            "11033900": 26,
+            "1020310": 26,
+            "1603641": 25,
+            "1990655": 24,
+            "11209762": 24,
+            "1600134": 23,
+            "11215103": 23,
+            "1056485": 23,
+            "1041999": 23,
+            "1991965": 22,
+            "1937471": 22,
+            "222444": 22,
+            "1941645": 21,
+            "1916902": 21,
+            "1605791": 20,
+            "11215803": 20,
+            "11241611": 7
+        };
+
+        // دالة لتحميل الجدول بالبيانات الجديدة
+        function loadUsersTable() {
+            const tableBody = document.getElementById('usersTable');
+            tableBody.innerHTML = '';
+            
+            // تحويل البيانات إلى مصفوفة وترتيبها تنازلياً حسب النقاط
+            const sortedUsers = Object.entries(userPointsData)
+                .sort(([,a], [,b]) => b - a);
+            
+            sortedUsers.forEach(([userId, points]) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><strong>${userId}</strong></td>
+                    <td><span class="user-points-badge">${points} نقطة</span></td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // دالة البحث عن نقاط المستخدم
+        function searchUserPoints() {
+            const userIdInput = document.getElementById('userIdSearch');
+            const resultDiv = document.getElementById('searchResult');
+            const userId = userIdInput.value.trim();
+            
+            if (!userId) {
+                resultDiv.innerHTML = '<span style="color: red;">⚠️ يرجى إدخال الـ ID الخاص بك</span>';
+                return;
+            }
+            
+            if (userPointsData[userId]) {
+                const points = userPointsData[userId];
+                resultDiv.innerHTML = `<span style="color: green;">🎉 مبروك! الـ ID ${userId} لديه ${points} نقطة</span>`;
+                
+                // إظهار الصف المطلوب فقط في الجدول
+                filterTableByUserId(userId);
+            } else {
+                resultDiv.innerHTML = `<span style="color: red;">❌ لم يتم العثور على الـ ID ${userId} في قاعدة البيانات</span>`;
+                // إعادة عرض جميع الصفوف
+                showAllTableRows();
+            }
+        }
+
+        // دالة تصفية الجدول حسب الـ ID
+        function filterTableByUserId(userId) {
+            const tableRows = document.querySelectorAll('#usersTable tr');
+            tableRows.forEach(row => {
+                const rowUserId = row.querySelector('td strong').textContent;
+                if (rowUserId === userId) {
+                    row.style.display = '';
+                    row.style.background = 'rgba(74, 222, 128, 0.2)'; // لون خلفية مميز
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        // دالة إعادة عرض جميع الصفوف
+        function showAllTableRows() {
+            const tableRows = document.querySelectorAll('#usersTable tr');
+            tableRows.forEach(row => {
+                row.style.display = '';
+                row.style.background = '';
+            });
+        }
+
+        // البحث عند الضغط على زر Enter
+        document.getElementById('userIdSearch').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchUserPoints();
+            }
+        });
+
         // دالة فتح التبويبات
         function openTab(tabId) {
             // إخفاء جميع المحتويات
@@ -527,10 +824,19 @@
             
             // تفعيل الزر المطلوب
             event.currentTarget.classList.add('active');
+            
+            // إعادة عرض جميع الصفوف عند تغيير التبويب
+            if (tabId === 'users-tab') {
+                showAllTableRows();
+                document.getElementById('searchResult').innerHTML = '';
+                document.getElementById('userIdSearch').value = '';
+            }
         }
         
-        // تأثيرات بسيطة للصفحة
+        // تحميل الجدول عند بدء التشغيل
         document.addEventListener('DOMContentLoaded', function() {
+            loadUsersTable();
+            
             // تأثير للجدول
             const tableRows = document.querySelectorAll('tbody tr');
             
@@ -547,9 +853,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
