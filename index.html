@@ -135,7 +135,6 @@
         }
         
         .tabs-container::before {
-            content: "🎯 اضغط هنا لمعرفة النشاط!";
             position: absolute;
             top: -15px;
             right: 50%;
@@ -638,7 +637,6 @@
             "8088": 178,
             "1495696": 175,
             "1055756": 173,
-            "44": 156,
             "222266": 145,
             "600666": 125,
             "1298898": 118,
@@ -764,7 +762,7 @@
             
             if (userPointsData[userId]) {
                 const points = userPointsData[userId];
-                resultDiv.innerHTML = `<span style="color: green;">🎉 مبروك! الـ ID ${userId} لديه ${points} نقطة</span>`;
+                resultDiv.innerHTML = `<span style="color: gold;">🎉 مبروك! الـ ID ${userId} لديه ${points} نقطة</span>`;
                 
                 // إظهار الصف المطلوب فقط في الجدول
                 filterTableByUserId(userId);
@@ -853,3 +851,4 @@
     </script>
 </body>
 </html>
+
