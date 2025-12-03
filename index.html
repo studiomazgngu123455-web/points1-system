@@ -19,6 +19,8 @@
             --gold-dark: #D4AF37;
             --red: #B91C1C;
             --red-light: #EF4444;
+            --green: #10B981;
+            --green-light: #34D399;
             --dark-bg: #0F172A;
             --dark-card: #1E293B;
             --text-light: #FFFFFF;
@@ -358,19 +360,129 @@
             font-size: 0.9rem;
         }
         
-        /* زر الواتساب الواضح */
-        .whatsapp-section {
-            text-align: center;
-            margin: 40px 0;
-            padding: 30px;
-            background: linear-gradient(135deg, 
-                rgba(37, 211, 102, 0.1), 
-                rgba(255, 215, 0, 0.1));
-            border-radius: 15px;
-            border: 2px solid #25D366;
-            animation: fadeIn 0.5s ease;
+        /* المودال - التأكيد الذكي الجديد */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
         }
         
+        .confirmation-modal {
+            background: linear-gradient(135deg, 
+                rgba(30, 41, 59, 0.95), 
+                rgba(16, 185, 129, 0.1));
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            border: 3px solid var(--gold);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: modalSlide 0.4s ease;
+        }
+        
+        @keyframes modalSlide {
+            from { opacity: 0; transform: translateY(-30px) scale(0.9); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        
+        .modal-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .modal-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2.5rem;
+            color: #000;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+        }
+        
+        .modal-title {
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+            color: var(--gold);
+        }
+        
+        .modal-subtitle {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+        }
+        
+        .modal-body {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 2px solid rgba(255, 215, 0, 0.2);
+        }
+        
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .info-row:last-child {
+            border-bottom: none;
+            padding-top: 20px;
+            margin-top: 10px;
+            border-top: 2px solid var(--gold);
+        }
+        
+        .info-label {
+            color: var(--text-gray);
+            font-weight: 600;
+        }
+        
+        .info-value {
+            color: var(--gold);
+            font-weight: 700;
+            text-align: left;
+            max-width: 60%;
+        }
+        
+        .info-value.highlight {
+            color: var(--green);
+            font-size: 1.3rem;
+            font-weight: 900;
+        }
+        
+        .modal-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        
+        .btn-ghost {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            border: 2px solid var(--text-gray);
+        }
+        
+        .btn-ghost:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: var(--text-light);
+        }
+        
+        /* زر الواتساب الواضح */
         .whatsapp-btn {
             background: linear-gradient(135deg, #25D366, #128C7E);
             color: white;
@@ -507,6 +619,14 @@
             .contact-info {
                 flex-direction: column;
                 gap: 15px;
+            }
+            
+            .modal-actions {
+                flex-direction: column;
+            }
+            
+            .modal-actions .btn {
+                width: 100%;
             }
         }
         
@@ -662,21 +782,55 @@
                     <div id="rewardsGrid" class="rewards-grid">
                         <!-- سيتم تعبئتها بالجافاسكريبت -->
                     </div>
-                    
-                    <div id="whatsappSection" class="whatsapp-section" style="display: none;">
-                        <h3 class="section-title" style="color: #25D366;">
-                            <i class="fab fa-whatsapp"></i> الطلب جاهز للإرسال
-                        </h3>
-                        <p style="color: var(--text-gray); margin-bottom: 30px;">
-                            تم اختيار المكافأة بنجاح، اضغط على الزر لإرسال الطلب
-                        </p>
-                        <button onclick="sendToWhatsApp()" class="whatsapp-btn">
-                            <i class="fab fa-whatsapp"></i> إرسال الطلب للواتساب
-                        </button>
-                        <p style="color: var(--text-gray); margin-top: 20px; font-size: 0.9rem;">
-                            سيتم فتح واتساب مع رسالة الطلب الجاهزة
-                        </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- المودال - التأكيد الذكي -->
+        <div id="confirmationModal" class="modal-overlay">
+            <div class="confirmation-modal">
+                <div class="modal-header">
+                    <div class="modal-icon">
+                        <i class="fas fa-question"></i>
                     </div>
+                    <h2 class="modal-title">التأكيد النهائي</h2>
+                    <p class="modal-subtitle">راجع بيانات طلبك قبل الإرسال</p>
+                </div>
+                
+                <div class="modal-body">
+                    <div class="info-row">
+                        <span class="info-label">المعرف:</span>
+                        <span class="info-value" id="modalUserId">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">النقاط الحالية:</span>
+                        <span class="info-value" id="modalCurrentPoints">0</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">المكافأة المختارة:</span>
+                        <span class="info-value" id="modalReward">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">سعر المكافأة:</span>
+                        <span class="info-value" id="modalPrice">0 نقطة</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">المدة:</span>
+                        <span class="info-value" id="modalDuration">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">النقاط المتبقية:</span>
+                        <span class="info-value highlight" id="modalRemainingPoints">0</span>
+                    </div>
+                </div>
+                
+                <div class="modal-actions">
+                    <button onclick="closeModal()" class="btn btn-ghost">
+                        <i class="fas fa-times"></i> إلغاء
+                    </button>
+                    <button onclick="sendToWhatsApp()" class="whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i> إرسال عبر واتساب
+                    </button>
                 </div>
             </div>
         </div>
@@ -731,9 +885,9 @@
     </div>
 
     <script>
-        // ========== بيانات النقاط الجديدة المحدثة ==========
+        // ========== بيانات النقاط ==========
         const userPointsData = {
-            "33": 1780,
+   "33": 1780,
             "11208004": 998,
             "33333": 157,
             "111112": 320,
@@ -1469,83 +1623,7 @@
         };
         let selectedReward = null;
 
-        // ======== الدالة للتاريخ الميلادي ========
-        function getSimpleDateTime() {
-            const now = new Date();
-            
-            // اليوم (رقم)
-            const day = now.getDate();
-            
-            // الشهر (رقم) - نضيف 1 لأن الأشهر تبدأ من 0
-            const month = now.getMonth() + 1;
-            
-            // السنة
-            const year = now.getFullYear();
-            
-            // الساعة
-            const hours = now.getHours();
-            
-            // الدقائق
-            const minutes = now.getMinutes();
-            
-            // تحديد إذا كان صباحاً أم مساءً
-            const period = hours >= 12 ? 'مساءً' : 'صباحاً';
-            
-            // تحويل الساعة إلى نظام 12 ساعة
-            const hour12 = hours % 12 || 12;
-            
-            // تنسيق الدقائق ليكون دائمًا برقمين (05 بدل 5)
-            const formattedMinutes = minutes.toString().padStart(2, '0');
-            
-            // إرجاع النتيجة ككائن
-            return {
-                date: `${day}/${month}/${year}`,                       // 1/12/2025
-                time: `${hour12}:${formattedMinutes} ${period}`,       // 02:30 مساءً
-                day: day,                                              // اليوم (رقم)
-                month: month,                                          // الشهر (رقم)
-                year: year,                                            // السنة
-                hour12: hour12,                                        // الساعة (12 ساعة)
-                minutes: formattedMinutes,                             // الدقائق
-                period: period                                         // صباحاً/مساءً
-            };
-        }
-        
-        // دالة إنشاء رسالة واتساب كاملة
-        function createWhatsAppMessage(userId, currentPoints, reward, rewardPrice, duration) {
-            // حساب النقاط المتبقية
-            const remainingPoints = currentPoints - rewardPrice;
-            
-            // الحصول على التاريخ والوقت
-            const dateTime = getSimpleDateTime();
-            
-            // إنشاء الرسالة البسيطة الواضحة
-            let message = `طلب مكافأة - نظام مكافآت النقاط الحصرية\n\n`;
-            
-            // قسم معلومات الطلب
-            message += `📋 معلومات الطلب:\n`;
-            message += `المعرف: ${userId}\n`;
-            message += `النقاط الحالية: ${currentPoints}\n`;
-            message += `النقاط بعد الخصم: ${remainingPoints}\n\n`;
-            
-            // قسم المكافأة
-            message += `🎁 المكافأة المطلوبة:\n`;
-            message += `النوع: ${reward}\n`;
-            message += `السعر: ${rewardPrice} نقطة\n`;
-            message += `المدة: ${duration}\n\n`;
-            
-            // قسم الوقت والتاريخ
-            message += `🕒 معلومات الوقت:\n`;
-            message += `التاريخ: ${dateTime.date}\n`;
-            message += `الوقت: ${dateTime.time}\n\n`;
-            
-            // تذييل
-            message += `شكراً لاستخدام نظام مكافآت النقاط الحصرية`;
-            
-            return message;
-        }
-        // ======== نهاية الدالة الجديدة ========
-
-        // فتح التبويبات
+        // ======== فتح التبويبات ========
         function openTab(tabId) {
             // إخفاء جميع المحتويات
             document.querySelectorAll('.tab-content').forEach(tab => {
@@ -1569,7 +1647,7 @@
             }
         }
 
-        // التحقق من نقاط المستخدم
+        // ======== التحقق من نقاط المستخدم ========
         function checkUserPoints() {
             const userId = document.getElementById('userId').value;
             const pointsDisplay = document.getElementById('pointsDisplay');
@@ -1603,7 +1681,7 @@
             }
         }
 
-        // تحميل المكافآت المتاحة
+        // ======== تحميل المكافآت المتاحة ========
         function loadAvailableRewards() {
             const rewardsGrid = document.getElementById('rewardsGrid');
             rewardsGrid.innerHTML = '';
@@ -1642,12 +1720,9 @@
                     </div>
                 `;
             }
-            
-            // إخفاء قسم الواتساب
-            document.getElementById('whatsappSection').style.display = 'none';
         }
 
-        // اختيار المكافأة
+        // ======== اختيار المكافأة ========
         function selectReward(reward) {
             selectedReward = reward;
             
@@ -1661,80 +1736,129 @@
             if (selectedCard) {
                 selectedCard.classList.add('selected');
                 
-                // إظهار قسم الواتساب
-                document.getElementById('whatsappSection').style.display = 'block';
-                
-                // تمرير ناعم للزر
+                // فتح المودال بعد نصف ثانية
                 setTimeout(() => {
-                    document.getElementById('whatsappSection').scrollIntoView({ 
-                        behavior: 'smooth', 
-                        block: 'center' 
-                    });
-                }, 300);
+                    openConfirmationModal();
+                }, 500);
             }
         }
 
-        // ======== دالة الإرسال للواتساب الجديدة ========
+        // ======== فتح مودال التأكيد ========
+        function openConfirmationModal() {
+            if (!selectedReward || !currentUser.id) {
+                alert("الرجاء اختيار مكافأة أولاً");
+                return;
+            }
+            
+            // تعبئة بيانات المودال
+            document.getElementById('modalUserId').textContent = currentUser.id;
+            document.getElementById('modalCurrentPoints').textContent = currentUser.points;
+            document.getElementById('modalReward').textContent = selectedReward.name;
+            document.getElementById('modalPrice').textContent = selectedReward.price + ' نقطة';
+            document.getElementById('modalDuration').textContent = selectedReward.duration;
+            
+            // حساب النقاط المتبقية
+            const remainingPoints = currentUser.points - selectedReward.price;
+            document.getElementById('modalRemainingPoints').textContent = remainingPoints;
+            
+            // إظهار المودال
+            document.getElementById('confirmationModal').style.display = 'flex';
+        }
+
+        // ======== إغلاق المودال ========
+        function closeModal() {
+            document.getElementById('confirmationModal').style.display = 'none';
+        }
+
+        // ======== الدالة للتاريخ الميلادي ========
+        function getSimpleDateTime() {
+            const now = new Date();
+            
+            const day = now.getDate();
+            const month = now.getMonth() + 1;
+            const year = now.getFullYear();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const period = hours >= 12 ? 'مساءً' : 'صباحاً';
+            const hour12 = hours % 12 || 12;
+            const formattedMinutes = minutes.toString().padStart(2, '0');
+            
+            return {
+                date: `${day}/${month}/${year}`,
+                time: `${hour12}:${formattedMinutes} ${period}`,
+            };
+        }
+
+        // ======== إرسال للواتساب ========
         function sendToWhatsApp() {
-            // التأكد من وجود بيانات كافية
             if (!currentUser.id || !selectedReward) {
                 alert("الرجاء إدخال المعرف واختيار مكافأة أولاً");
                 return;
             }
             
-            // إنشاء الرسالة
-            const message = createWhatsAppMessage(
-                currentUser.id,                  // المعرف
-                currentUser.points,              // النقاط الحالية
-                selectedReward.name,             // نوع المكافأة
-                selectedReward.price,            // سعر المكافأة
-                selectedReward.duration          // مدة المكافأة
-            );
+            // التأكد من أن النقاط كافية
+            if (currentUser.points < selectedReward.price) {
+                alert("❌ نقاطك غير كافية لهذه المكافأة!");
+                closeModal();
+                return;
+            }
             
-            // رقم الواتساب
-            const whatsappNumber = "201556864346";
+            // خصم النقاط أولاً
+            if (userPointsData[currentUser.id] !== undefined) {
+                userPointsData[currentUser.id] -= selectedReward.price;
+                currentUser.points = userPointsData[currentUser.id];
+            }
             
-            // ترميز الرسالة
-            const encodedMessage = encodeURIComponent(message);
+            // إنشاء رسالة الواتساب
+            const remainingPoints = currentUser.points;
+            const dateTime = getSimpleDateTime();
+            
+            let message = `🎯 طلب مكافأة - نظام مكافآت النقاط الحصرية\n`;
+            message += `════════════════════════════════\n\n`;
+            message += `📋 معلومات الطلب:\n`;
+            message += `├ 🆔 المعرف: ${currentUser.id}\n`;
+            message += `├ 💰 النقاط: ${currentUser.points + selectedReward.price} نقطة\n`;
+            message += `├ 💸 تم خصم: ${selectedReward.price} نقطة\n`;
+            message += `└ 📊 المتبقي: ${remainingPoints} نقطة\n\n`;
+            message += `🎁 المكافأة المطلوبة:\n`;
+            message += `├ 📝 النوع: ${selectedReward.name}\n`;
+            message += `└ ⏳ المدة: ${selectedReward.duration}\n\n`;
+            message += `🕒 وقت الطلب:\n`;
+            message += `├ 📅 التاريخ: ${dateTime.date}\n`;
+            message += `└ ⏰ الوقت: ${dateTime.time}\n\n`;
+            message += `════════════════════════════════\n`;
+            message += `✅ تم الخصم تلقائياً\n`;
+            message += `🔗 نظام مكافآت النقاط الحصرية`;
             
             // فتح واتساب
+            const whatsappNumber = "201556864346";
+            const encodedMessage = encodeURIComponent(message);
             window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
             
-            // إظهار رسالة تأكيد
-            alert("✅ تم فتح واتساب مع رسالة طلبك الجاهزة!\n\nاضغط إرسال في واتساب لإكمال الطلب.");
+            // إغلاق المودال
+            closeModal();
             
-            // إعادة تعيين النظام بعد 3 ثواني
+            // تحديث عرض النقاط
+            document.getElementById('currentPoints').textContent = currentUser.points;
+            
+            // عرض رسالة النجاح
+            alert(`✅ تم إرسال طلبك بنجاح!\n\n📊 تم خصم ${selectedReward.price} نقطة\n📊 النقاط المتبقية: ${currentUser.points}`);
+            
+            // إعادة تحميل المكافآت
             setTimeout(() => {
-                resetSystem();
-            }, 3000);
-        }
-        // ======== نهاية دالة الإرسال الجديدة ========
-
-        // دالة إعادة تعيين النظام
-        function resetSystem() {
-            currentUser = { id: "", points: 0 };
-            selectedReward = null;
-            
-            // إعادة تعيين الحقول
-            document.getElementById('userId').value = "";
-            document.getElementById('pointsDisplay').style.display = 'none';
-            document.getElementById('whatsappSection').style.display = 'none';
-            
-            // إزالة التحديد من جميع المكافآت
-            document.querySelectorAll('.reward-card').forEach(card => {
-                card.classList.remove('selected');
-            });
-            
-            // العودة للتبويب الأول
-            openTab('search-tab');
-            
-            // التركيز على حقل الإدخال
-            document.getElementById('userId').focus();
+                loadAvailableRewards();
+            }, 1000);
         }
 
-        // ========== تهيئة الصفحة ==========
+        // ======== إغلاق المودال عند الضغط خارجها ========
+        document.getElementById('confirmationModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // ======== البحث عند الضغط على Enter ========
         document.addEventListener('DOMContentLoaded', function() {
-            // البحث عند الضغط على زر Enter
             document.getElementById('userId').addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') {
                     checkUserPoints();
@@ -1742,7 +1866,6 @@
             });
             
             console.log('🎯 نظام مكافآت النقاط الحصرية جاهز للعمل!');
-            console.log('📊 تم تحميل ' + Object.keys(userPointsData).length + ' مستخدم في النظام');
         });
     </script>
 </body>
