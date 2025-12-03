@@ -44,40 +44,40 @@
         /* الهيدر الواضح */
         .header {
             text-align: center;
-            padding: 40px 20px;
-            margin-bottom: 40px;
+            padding: 30px 20px;
+            margin-bottom: 30px;
             background: linear-gradient(135deg, var(--dark-card), rgba(212, 175, 55, 0.1));
             border-radius: 20px;
             border: 2px solid var(--gold);
         }
         
         .logo {
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
             background: linear-gradient(135deg, var(--gold), var(--gold-dark));
             border-radius: 50%;
-            margin: 0 auto 25px;
+            margin: 0 auto 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 30px var(--gold);
+            box-shadow: 0 0 25px var(--gold);
         }
         
         .logo i {
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: #000;
         }
         
         .main-title {
-            font-size: 2.8rem;
+            font-size: 2.2rem;
             font-weight: 900;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             color: var(--gold);
             letter-spacing: 1px;
         }
         
         .subtitle {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--text-gray);
             max-width: 600px;
             margin: 0 auto;
@@ -87,17 +87,17 @@
         .steps-guide {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin: 40px 0;
+            gap: 15px;
+            margin: 30px 0;
             flex-wrap: wrap;
         }
         
         .step {
             text-align: center;
             flex: 1;
-            min-width: 200px;
+            min-width: 150px;
             background: var(--dark-card);
-            padding: 25px 20px;
+            padding: 20px 15px;
             border-radius: 15px;
             border: 2px solid var(--gold);
             transition: all 0.3s;
@@ -109,8 +109,8 @@
         }
         
         .step-number {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             background: linear-gradient(135deg, var(--gold), var(--gold-dark));
             color: #000;
             border-radius: 50%;
@@ -118,27 +118,27 @@
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            font-size: 1.3rem;
-            margin: 0 auto 15px;
+            font-size: 1.2rem;
+            margin: 0 auto 10px;
         }
         
         .step-title {
             color: var(--gold);
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         
         .step-desc {
             color: var(--text-gray);
-            font-size: 1rem;
+            font-size: 0.9rem;
         }
         
         /* نظام التبويب الواضح */
         .tabs-container {
             background: var(--dark-card);
             border-radius: 15px;
-            margin: 40px 0;
+            margin: 30px 0;
             overflow: hidden;
             border: 2px solid var(--gold);
         }
@@ -153,15 +153,16 @@
         
         .tab-btn {
             flex: 1;
-            padding: 20px;
+            padding: 15px 10px;
             background: transparent;
             border: none;
             color: var(--text-gray);
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s;
             border-right: 1px solid rgba(255, 255, 255, 0.1);
+            white-space: nowrap;
         }
         
         .tab-btn:last-child {
@@ -180,7 +181,7 @@
         
         .tab-content {
             display: none;
-            padding: 30px;
+            padding: 25px;
         }
         
         .tab-content.active {
@@ -197,15 +198,15 @@
         .search-section {
             background: rgba(255, 215, 0, 0.05);
             border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
+            padding: 25px;
+            margin-bottom: 25px;
             border: 2px solid rgba(255, 215, 0, 0.3);
         }
         
         .section-title {
             color: var(--gold);
-            font-size: 1.5rem;
-            margin-bottom: 20px;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -213,25 +214,19 @@
         
         .search-box {
             display: flex;
-            gap: 15px;
+            gap: 12px;
             max-width: 500px;
             margin: 0 auto;
         }
         
-        @media (max-width: 768px) {
-            .search-box {
-                flex-direction: column;
-            }
-        }
-        
         .input-field {
             flex: 1;
-            padding: 15px 20px;
+            padding: 12px 15px;
             background: rgba(255, 255, 255, 0.05);
             border: 2px solid var(--gold);
             border-radius: 10px;
             color: white;
-            font-size: 1.1rem;
+            font-size: 1rem;
             text-align: center;
             transition: all 0.3s;
         }
@@ -239,21 +234,21 @@
         .input-field:focus {
             outline: none;
             border-color: var(--red-light);
-            box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.3);
         }
         
         .btn {
-            padding: 15px 30px;
+            padding: 12px 25px;
             border: none;
             border-radius: 10px;
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            min-width: 150px;
+            gap: 8px;
+            min-width: 120px;
             justify-content: center;
         }
         
@@ -283,36 +278,36 @@
                 rgba(255, 215, 0, 0.1), 
                 rgba(185, 28, 28, 0.1));
             border-radius: 15px;
-            padding: 30px;
-            margin: 20px 0;
+            padding: 25px;
+            margin: 15px 0;
             border: 2px solid var(--gold);
             text-align: center;
             animation: fadeIn 0.5s ease;
         }
         
         .points-value {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 900;
             color: var(--gold);
-            margin: 20px 0;
+            margin: 15px 0;
         }
         
         /* قائمة المكافآت */
         .rewards-section {
-            margin: 30px 0;
+            margin: 25px 0;
         }
         
         .rewards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
         }
         
         .reward-card {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 12px;
-            padding: 25px;
+            padding: 20px;
             border: 2px solid transparent;
             transition: all 0.3s;
             cursor: pointer;
@@ -332,17 +327,17 @@
         }
         
         .reward-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
+            font-size: 2rem;
+            margin-bottom: 10px;
             display: block;
         }
         
         .reward-name {
             color: var(--gold);
             font-weight: 700;
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            height: 60px;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            min-height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -351,16 +346,16 @@
         .reward-price {
             color: var(--red-light);
             font-weight: 900;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             margin-bottom: 5px;
         }
         
         .reward-duration {
             color: var(--text-gray);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
         
-        /* المودال - التأكيد الذكي الجديد */
+        /* المودال - التأكيد الذكي المظبوط للجوال */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -368,113 +363,138 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(15, 23, 42, 0.9);
+            background: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(5px);
             z-index: 1000;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 15px;
+            overflow-y: auto;
         }
         
         .confirmation-modal {
             background: linear-gradient(135deg, 
-                rgba(30, 41, 59, 0.95), 
+                rgba(30, 41, 59, 0.98), 
                 rgba(16, 185, 129, 0.1));
             border-radius: 20px;
-            padding: 40px;
-            max-width: 500px;
-            width: 100%;
+            padding: 20px;
+            width: 95%;
+            max-width: 450px;
+            max-height: 85vh;
+            overflow-y: auto;
             border: 3px solid var(--gold);
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
             animation: modalSlide 0.4s ease;
+            margin: auto;
         }
         
         @keyframes modalSlide {
-            from { opacity: 0; transform: translateY(-30px) scale(0.9); }
+            from { opacity: 0; transform: translateY(-20px) scale(0.95); }
             to { opacity: 1; transform: translateY(0) scale(1); }
         }
         
         .modal-header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
         
         .modal-icon {
-            width: 80px;
-            height: 80px;
+            width: 60px;
+            height: 60px;
             background: linear-gradient(135deg, var(--gold), var(--gold-dark));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 2.5rem;
+            margin: 0 auto 15px;
+            font-size: 1.8rem;
             color: #000;
-            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
         }
         
         .modal-title {
-            font-size: 1.8rem;
+            font-size: 1.4rem;
             font-weight: 900;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             color: var(--gold);
         }
         
         .modal-subtitle {
             color: var(--text-gray);
-            font-size: 1.1rem;
+            font-size: 0.95rem;
         }
         
         .modal-body {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 30px;
+            padding: 15px;
+            margin-bottom: 20px;
             border: 2px solid rgba(255, 215, 0, 0.2);
         }
         
         .info-row {
             display: flex;
             justify-content: space-between;
-            padding: 12px 0;
+            align-items: center;
+            padding: 10px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            min-height: 40px;
         }
         
         .info-row:last-child {
             border-bottom: none;
-            padding-top: 20px;
-            margin-top: 10px;
+            padding-top: 12px;
+            margin-top: 8px;
             border-top: 2px solid var(--gold);
         }
         
         .info-label {
             color: var(--text-gray);
             font-weight: 600;
+            font-size: 0.9rem;
+            flex: 1;
         }
         
         .info-value {
             color: var(--gold);
             font-weight: 700;
             text-align: left;
-            max-width: 60%;
+            flex: 1;
+            padding-right: 10px;
+            word-break: break-word;
+            font-size: 0.9rem;
         }
         
         .info-value.highlight {
             color: var(--green);
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             font-weight: 900;
         }
         
         .modal-actions {
             display: flex;
-            gap: 15px;
+            gap: 10px;
             justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
         }
         
         .btn-ghost {
             background: rgba(255, 255, 255, 0.1);
             color: var(--text-light);
             border: 2px solid var(--text-gray);
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex: 1;
+            min-width: 100px;
         }
         
         .btn-ghost:hover {
@@ -482,53 +502,56 @@
             border-color: var(--text-light);
         }
         
-        /* زر الواتساب الواضح */
         .whatsapp-btn {
             background: linear-gradient(135deg, #25D366, #128C7E);
             color: white;
             border: none;
-            padding: 20px 50px;
+            padding: 12px 20px;
             border-radius: 10px;
-            font-size: 1.3rem;
+            font-size: 0.95rem;
             font-weight: 700;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
-            gap: 15px;
+            justify-content: center;
+            gap: 10px;
             transition: all 0.3s;
-            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+            flex: 2;
+            min-width: 140px;
         }
         
         .whatsapp-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.6);
         }
         
         /* الجداول الواضحة */
         .table-container {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 12px;
-            padding: 20px;
-            margin: 20px 0;
+            padding: 15px;
+            margin: 15px 0;
             overflow-x: auto;
         }
         
         table {
             width: 100%;
             border-collapse: collapse;
+            min-width: 600px;
         }
         
         th {
             background: linear-gradient(135deg, var(--gold), var(--gold-dark));
             color: #000;
-            padding: 15px;
+            padding: 12px;
             text-align: center;
             font-weight: 700;
             border: 1px solid rgba(255, 215, 0, 0.5);
         }
         
         td {
-            padding: 12px;
+            padding: 10px;
             text-align: center;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--text-gray);
@@ -540,11 +563,12 @@
         
         .points-badge {
             display: inline-block;
-            padding: 8px 16px;
+            padding: 6px 12px;
             background: linear-gradient(135deg, var(--red-light), var(--red));
             color: white;
             border-radius: 20px;
             font-weight: 700;
+            font-size: 0.9rem;
         }
         
         /* القسم الذهبي */
@@ -553,8 +577,8 @@
                 rgba(212, 175, 55, 0.1), 
                 rgba(255, 215, 0, 0.1));
             border-radius: 15px;
-            padding: 30px;
-            margin: 30px 0;
+            padding: 25px;
+            margin: 25px 0;
             text-align: center;
             border: 2px solid var(--gold);
         }
@@ -562,8 +586,8 @@
         /* الفوتر */
         footer {
             text-align: center;
-            padding: 40px 20px;
-            margin-top: 40px;
+            padding: 30px 20px;
+            margin-top: 30px;
             border-top: 2px solid rgba(255, 215, 0, 0.3);
             color: var(--text-gray);
         }
@@ -571,36 +595,45 @@
         .contact-info {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            margin-top: 20px;
+            gap: 20px;
+            margin-top: 15px;
             flex-wrap: wrap;
         }
         
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             color: var(--gold);
             font-weight: 600;
-            padding: 10px 20px;
+            padding: 8px 15px;
             background: rgba(255, 215, 0, 0.1);
             border-radius: 8px;
             border: 1px solid rgba(255, 215, 0, 0.3);
         }
         
-        /* تحسينات للجوال */
+        /* تحسينات خاصة للجوال */
         @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
             .main-title {
-                font-size: 2.2rem;
+                font-size: 1.8rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
             }
             
             .steps-guide {
                 flex-direction: column;
-                gap: 15px;
+                gap: 10px;
             }
             
             .step {
                 min-width: 100%;
+                padding: 15px;
             }
             
             .tabs-header {
@@ -608,31 +641,54 @@
             }
             
             .tab-btn {
+                padding: 12px;
                 border-right: none;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             }
             
             .rewards-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            
+            .reward-card {
+                padding: 15px;
+            }
+            
+            .reward-name {
+                font-size: 1rem;
+                min-height: 40px;
             }
             
             .contact-info {
                 flex-direction: column;
-                gap: 15px;
+                gap: 10px;
+            }
+            
+            .confirmation-modal {
+                padding: 15px;
+                width: 95%;
+                max-width: 400px;
             }
             
             .modal-actions {
                 flex-direction: column;
             }
             
-            .modal-actions .btn {
+            .modal-actions .btn-ghost,
+            .modal-actions .whatsapp-btn {
                 width: 100%;
+                min-width: unset;
+            }
+            
+            .search-box {
+                flex-direction: column;
             }
         }
         
         @media (max-width: 480px) {
             .main-title {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
             }
             
             .rewards-grid {
@@ -641,6 +697,25 @@
             
             .tab-content {
                 padding: 20px 15px;
+            }
+            
+            .points-value {
+                font-size: 2.5rem;
+            }
+            
+            .modal-body {
+                padding: 12px;
+            }
+            
+            .info-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+            
+            .info-value {
+                text-align: right;
+                width: 100%;
             }
         }
     </style>
@@ -696,7 +771,7 @@
                     <h2 class="section-title">
                         <i class="fas fa-id-card"></i> البحث عن نقاطك
                     </h2>
-                    <p style="color: var(--text-gray); margin-bottom: 25px;">
+                    <p style="color: var(--text-gray); margin-bottom: 20px;">
                         أدخل المعرف الخاص بك لمعرفة عدد النقاط المتاحة لديك
                     </p>
                     
@@ -714,10 +789,10 @@
                         <i class="fas fa-trophy"></i> نقاطك المتاحة
                     </h3>
                     <div class="points-value" id="currentPoints">0</div>
-                    <p style="color: var(--gold); font-size: 1.2rem; margin-bottom: 15px;">
+                    <p style="color: var(--gold); font-size: 1.1rem; margin-bottom: 10px;">
                         المعرف: <strong id="currentUserId" style="color: var(--red-light);">-</strong>
                     </p>
-                    <p style="color: var(--text-gray); margin-bottom: 20px;">
+                    <p style="color: var(--text-gray); margin-bottom: 15px;">
                         يمكنك الآن اختيار المكافأة المناسبة لنقاطك
                     </p>
                     <button onclick="openTab('request-tab')" class="btn btn-red">
@@ -732,7 +807,7 @@
                     <h2 class="section-title">
                         <i class="fas fa-gem"></i> قائمة المكافآت المتاحة
                     </h2>
-                    <p style="color: var(--text-gray); margin-bottom: 30px;">
+                    <p style="color: var(--text-gray); margin-bottom: 25px;">
                         اختر من بين مجموعة المكافآت الحصرية المتاحة
                     </p>
                     
@@ -775,7 +850,7 @@
                     <h2 class="section-title">
                         <i class="fas fa-rocket"></i> طلب المكافأة
                     </h2>
-                    <p style="color: var(--text-gray); margin-bottom: 30px;">
+                    <p style="color: var(--text-gray); margin-bottom: 25px;">
                         اختر المكافأة التي تناسب نقاطك المتاحة
                     </p>
                     
@@ -825,7 +900,7 @@
                 </div>
                 
                 <div class="modal-actions">
-                    <button onclick="closeModal()" class="btn btn-ghost">
+                    <button onclick="closeModal()" class="btn-ghost">
                         <i class="fas fa-times"></i> إلغاء
                     </button>
                     <button onclick="sendToWhatsApp()" class="whatsapp-btn">
@@ -840,45 +915,45 @@
             <h2 class="section-title" style="color: var(--gold);">
                 <i class="fas fa-star"></i> مميزات النظام
             </h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin-top: 30px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 25px;">
                 <div style="text-align: center;">
-                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--gold), var(--gold-dark)); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px;">
-                        <i class="fas fa-bolt" style="font-size: 1.8rem; color: #000;"></i>
+                    <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--gold), var(--gold-dark)); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px;">
+                        <i class="fas fa-bolt" style="font-size: 1.5rem; color: #000;"></i>
                     </div>
-                    <h3 style="color: var(--gold); margin-bottom: 10px;">سرعة فائقة</h3>
-                    <p style="color: var(--text-gray);">ثلاث خطوات فقط للحصول على مكافأتك</p>
+                    <h3 style="color: var(--gold); margin-bottom: 8px; font-size: 1.1rem;">سرعة فائقة</h3>
+                    <p style="color: var(--text-gray); font-size: 0.9rem;">ثلاث خطوات فقط للحصول على مكافأتك</p>
                 </div>
                 <div style="text-align: center;">
-                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--red-light), var(--red)); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px;">
-                        <i class="fas fa-shield-alt" style="font-size: 1.8rem; color: white;"></i>
+                    <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--red-light), var(--red)); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px;">
+                        <i class="fas fa-shield-alt" style="font-size: 1.5rem; color: white;"></i>
                     </div>
-                    <h3 style="color: var(--gold); margin-bottom: 10px;">آمن ومضمون</h3>
-                    <p style="color: var(--text-gray);">جميع الطلبات مؤمنة ومراقبة</p>
+                    <h3 style="color: var(--gold); margin-bottom: 8px; font-size: 1.1rem;">آمن ومضمون</h3>
+                    <p style="color: var(--text-gray); font-size: 0.9rem;">جميع الطلبات مؤمنة ومراقبة</p>
                 </div>
                 <div style="text-align: center;">
-                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #25D366, #128C7E); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px;">
-                        <i class="fas fa-headset" style="font-size: 1.8rem; color: white;"></i>
+                    <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #25D366, #128C7E); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px;">
+                        <i class="fas fa-headset" style="font-size: 1.5rem; color: white;"></i>
                     </div>
-                    <h3 style="color: var(--gold); margin-bottom: 10px;">دعم فوري</h3>
-                    <p style="color: var(--text-gray);">فريق الدعم متاح لخدمتك</p>
+                    <h3 style="color: var(--gold); margin-bottom: 8px; font-size: 1.1rem;">دعم فوري</h3>
+                    <p style="color: var(--text-gray); font-size: 0.9rem;">فريق الدعم متاح لخدمتك</p>
                 </div>
             </div>
         </div>
         
         <!-- الفوتر -->
         <footer>
-            <div style="color: var(--gold); font-size: 1.5rem; font-weight: 700; margin-bottom: 15px;">
+            <div style="color: var(--gold); font-size: 1.3rem; font-weight: 700; margin-bottom: 10px;">
                 <i class="fas fa-crown"></i> نظام مكافآت النقاط الحصرية
             </div>
-            <p style="color: var(--text-gray); margin-bottom: 10px;">TopVoice © 2024</p>
-            <p style="color: var(--gold); margin-bottom: 30px; font-size: 1.1rem;">
+            <p style="color: var(--text-gray); margin-bottom: 10px; font-size: 0.9rem;">TopVoice © 2024</p>
+            <p style="color: var(--gold); margin-bottom: 20px; font-size: 1rem;">
                 جعل تجربتك أكثر سهولة وفعالية
             </p>
             
             <div class="contact-info">
                 <div class="contact-item">
                     <i class="fab fa-whatsapp" style="color: #25D366;"></i>
-                    <span>واتساب الدعم: 201556864346</span>
+                    <span style="font-size: 0.9rem;">واتساب الدعم: 201556864346</span>
                 </div>
             </div>
         </footer>
@@ -1645,6 +1720,9 @@
             if (tabId === 'request-tab' && currentUser.points > 0) {
                 loadAvailableRewards();
             }
+            
+            // إغلاق المودال إذا كان مفتوح
+            closeModal();
         }
 
         // ======== التحقق من نقاط المستخدم ========
@@ -1707,14 +1785,14 @@
             
             if (availableRewards === 0) {
                 rewardsGrid.innerHTML = `
-                    <div style="grid-column: 1 / -1; text-align: center; padding: 40px; background: rgba(239, 68, 68, 0.1); border-radius: 12px; border: 2px solid var(--red-light);">
-                        <div style="font-size: 2.5rem; color: var(--red-light); margin-bottom: 15px;">
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 30px; background: rgba(239, 68, 68, 0.1); border-radius: 12px; border: 2px solid var(--red-light);">
+                        <div style="font-size: 2rem; color: var(--red-light); margin-bottom: 10px;">
                             <i class="fas fa-exclamation-circle"></i>
                         </div>
-                        <div style="color: var(--gold); margin-bottom: 10px; font-size: 1.2rem;">
+                        <div style="color: var(--gold); margin-bottom: 10px; font-size: 1.1rem;">
                             نقاطك لا تكفي لأي مكافأة
                         </div>
-                        <p style="color: var(--text-gray);">
+                        <p style="color: var(--text-gray); font-size: 0.9rem;">
                             تحتاج إلى المزيد من النقاط للحصول على المكافآت
                         </p>
                     </div>
@@ -1739,7 +1817,7 @@
                 // فتح المودال بعد نصف ثانية
                 setTimeout(() => {
                     openConfirmationModal();
-                }, 500);
+                }, 300);
             }
         }
 
@@ -1763,11 +1841,13 @@
             
             // إظهار المودال
             document.getElementById('confirmationModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // منع التمرير خلف المودال
         }
 
         // ======== إغلاق المودال ========
         function closeModal() {
             document.getElementById('confirmationModal').style.display = 'none';
+            document.body.style.overflow = 'auto'; // إعادة التمرير
         }
 
         // ======== الدالة للتاريخ الميلادي ========
@@ -1853,6 +1933,13 @@
         // ======== إغلاق المودال عند الضغط خارجها ========
         document.getElementById('confirmationModal').addEventListener('click', function(e) {
             if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // ======== إغلاق المودال بالزر Esc ========
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
                 closeModal();
             }
         });
